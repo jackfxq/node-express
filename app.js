@@ -13,4 +13,6 @@ app.set('port', port);
 let server = http.createServer(app);
 
 // 监听端口号
-server.listen(port);
+server.listen(port,() => {
+    console.log('Listening on port %d', port);
+});
