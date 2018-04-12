@@ -5,7 +5,11 @@ let app = express();
 
 app.get('/hello', function(req, res){
     res.send('Hello World');
-  });
+});
+
+app.get('/express', function(req, res){
+    res.send('Hello node-express');
+});
 
 
 // 导出app实例，供其他模块调用
