@@ -4,7 +4,7 @@ let express = require('express');
 let app = express();
 
 app.get('/hello', function(req, res){
-    res.send('hello express');
+    res.send('hello express of node');
 });
 
 app.get('/express', function(req, res){
