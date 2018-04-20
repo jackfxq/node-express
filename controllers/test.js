@@ -20,9 +20,9 @@ function update(req, res) {
   })
 }
 
-function express(req, res) {
-  db.test.find({},(err,data) => {
-      console.log(data)
-      res.send(`Hello node-express${data}`);
+function express(req, res,next) {
+  db.test.find({},{a:1,b:1, _id:0 },(err,data) => {
+      // console.log(data)
+      next({code:0,data:data})
   })
 }

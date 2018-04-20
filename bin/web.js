@@ -1,7 +1,7 @@
 // 生成一个express实例app
 let express = require('express');
-let db = require('../modules/index')
 let router = require('../routes/router')
+let errorHandler = require('../middlewares/errorHandler')
 
 let app = express();
 
@@ -15,6 +15,8 @@ app.all('*', function(req, res, next) {
 });
 
 app.use('/', router);
+
+app.use(errorHandler);
 
 
 // 导出app实例，供其他模块调用
