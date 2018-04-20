@@ -1,5 +1,6 @@
 // 生成一个express实例app
 let express = require('express');
+let test = require('../modules/index')
 
 let app = express();
 
@@ -8,6 +9,10 @@ app.get('/hello', function(req, res){
 });
 
 app.get('/express', function(req, res){
+    console.log(test)
+    test.find({},(data) => {
+        console.log(data)
+    })
     res.send('Hello node-express');
 });
 
