@@ -1,6 +1,7 @@
 // 生成一个express实例app
 let express = require('express');
-let test = require('../modules/index')
+let db = require('../modules/index')
+let router = require('../routes/router')
 
 let app = express();
 
@@ -13,17 +14,7 @@ app.all('*', function(req, res, next) {
     next();
 });
 
-app.get('/hello', function(req, res){
-    res.send('hello express');
-});
-
-app.get('/express', function(req, res){
-    console.log(test)
-    test.find({},(data) => {
-        console.log(data)
-    })
-    res.send('Hello node-express');
-});
+app.use('/', router);
 
 
 // 导出app实例，供其他模块调用
