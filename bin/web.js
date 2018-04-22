@@ -2,6 +2,7 @@
 let express = require('express');
 let router = require('../routes/router')
 let errorHandler = require('../middlewares/errorHandler')
+let bodyParser = require('body-parser');
 
 let app = express();
 
@@ -13,6 +14,9 @@ app.all('*', function(req, res, next) {
     res.header("Content-Type", "application/json;charset=utf-8");
     next();
 });
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 app.use('/', router);
 

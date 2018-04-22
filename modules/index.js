@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const config=require('../../mongodb.js');
 const Schema = mongoose.Schema;
+const list = require('./list')
 console.log(config.mongodb.connect)
 
 mongoose.connect(config.mongodb.connect,{}).then(() => {
@@ -16,4 +17,7 @@ const schema = new Schema({
   collection:'test'
 })
 
-module.exports={test:mongoose.model('test',schema)}
+module.exports={
+  test:mongoose.model('test',schema),
+  list:mongoose.model('list',list.schema)
+}
