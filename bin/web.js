@@ -9,11 +9,9 @@ let app = express();
 
 app.all('*', function(req, res, next) {
     console.log(req.get('Origin'),`${req.protocol}://${req.hostname}`,config.accessControlAllowOrigin.includes(`${req.protocol}://${req.hostname}`),config.accessControlAllowOrigin)
-    let origin = req.get('Origin').split(':');
-    origin.length=2;
-    console.log(origin.join(':'))
-    if(config.accessControlAllowOrigin.includes(origin.join(':'))){
-        res.header("Access-Control-Allow-Origin", origin.join(':'));
+    
+    if(config.accessControlAllowOrigin.includes(origin)){
+        res.header("Access-Control-Allow-Origin", origin);
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
         res.header("X-Powered-By",' 3.2.1')
