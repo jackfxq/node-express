@@ -3,15 +3,19 @@ let express = require('express');
 let router = require('../routes/router')
 let errorHandler = require('../middlewares/errorHandler')
 let bodyParser = require('body-parser');
+let config = require('../config')
 
 let app = express();
 
 app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://111.230.35.213");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By",' 3.2.1')
-    res.header("Content-Type", "application/json;charset=utf-8");
+    if(config.accessControlAllowOrigin.includes(req.header.origin)){
+        res.header("Access-Control-Allow-Origin", req.header.origin);
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+        res.header("X-Powered-By",' 3.2.1')
+        res.header("Content-Type", "application/json;charset=utf-8");
+    }
+    
     next();
 });
 
