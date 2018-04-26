@@ -8,8 +8,9 @@ let config = require('../config')
 let app = express();
 
 app.all('*', function(req, res, next) {
-    if(config.accessControlAllowOrigin.includes(req.header.origin)){
-        res.header("Access-Control-Allow-Origin", req.header.origin);
+    console.log(`${req.protocol}://${req.hostname}`,config.accessControlAllowOrigin.includes(`${req.protocol}://${req.hostname}`),config.accessControlAllowOrigin)
+    if(config.accessControlAllowOrigin.includes(`${req.protocol}://${req.hostname}`)){
+        res.header("Access-Control-Allow-Origin", `${req.protocol}://${req.hostname}`);
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
         res.header("X-Powered-By",' 3.2.1')
