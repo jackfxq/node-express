@@ -3,7 +3,9 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
     id:String,
-    str:String
+    str:String,
+    title:String,
+    adstract:String
 },{
   collection:'list'
 })

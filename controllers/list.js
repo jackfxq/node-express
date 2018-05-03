@@ -11,7 +11,9 @@ function create(req,res,next) {
   let id=+new Date();
   db.list.create({
     id:id,
-    str:''
+    str:'',
+    title:'',
+    abstract:''
   },() => {
     next({code:0,data:{id:id}})
   })
@@ -19,10 +21,14 @@ function create(req,res,next) {
 
 function update(req,res,next) {
   let id = req.body.id;
-  let str = req.body.str
+  let str = req.body.str;
+  let title = req.body.title;
+  let abstract = req.body.abstract;
   db.list.update({id:id},{
     $set:{
-      str:str
+      str:str,
+      title:title,
+      abstract:abstract
     }
   },{
     upsert:true
@@ -32,7 +38,7 @@ function update(req,res,next) {
 }
 
 function findAll(req,res,next) {
-  db.list.find({},{id:1,str:1, _id:0 },(err,data) => {
+  db.list.find({},{id:1,str:1,title:1,abstract:1, _id:0 },(err,data) => {
       // console.log(data)
       next({code:0,data:data})
   })
@@ -41,7 +47,7 @@ function findAll(req,res,next) {
 function find(req,res,next) {
   let id = req.query.id
   console.log(id)
-  db.list.find({id:id},{id:1,str:1, _id:0 },(err,data) => {
+  db.list.find({id:id},{id:1,str:1,title:1,abstract:1, _id:0 },(err,data) => {
       // console.log(data)
       next({code:0,data:data})
   })
