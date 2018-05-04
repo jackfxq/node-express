@@ -5,7 +5,7 @@ const schema = new Schema({
     id:String,
     str:String,
     title:String,
-    adstract:String
+    abstract:String
 },{
   collection:'list'
 })
