@@ -16,3 +16,7 @@ let server = http.createServer(app);
 server.listen(port,() => {
     console.log('Listening on port %d', port);
 });
+
+process.on('uncaughtException', function (err) {
+    console.log(err);
+})
