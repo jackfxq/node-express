@@ -16,6 +16,7 @@ router.get('/api/list/findAll', list.findAll);
 router.get('/api/list/find', list.find);
 router.get('/api/manage/find',login, list.find);
 router.get('/api/manage/findAll',login, list.findAll);
+router.post('/api/manage/remove',login, list.remove);
 router.post('/login', user.login);
 router.get('/logout', user.logout);
 router.get('/getUserInfo',login, user.getUserInfo);

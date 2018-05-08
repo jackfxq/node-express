@@ -4,7 +4,17 @@ module.exports={
   findAll,
   update,
   create,
-  find
+  find,
+  remove
+}
+
+function remove(req,res,next) {
+  let id = req.body.id;
+  db.list.remove({
+    id:id,
+  },() => {
+    next({code:0,data:'success'})
+  })
 }
 
 function create(req,res,next) {
