@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const config=require('../../mongodb.js');
 const Schema = mongoose.Schema;
 const list = require('./list')
+const user = require('./user')
 console.log(config.mongodb.connect)
 
 mongoose.connect(config.mongodb.connect,{}).then(() => {
@@ -19,5 +20,6 @@ const schema = new Schema({
 
 module.exports={
   test:mongoose.model('test',schema),
-  list:mongoose.model('list',list.schema)
+  list:mongoose.model('list',list.schema),
+  user:mongoose.model('user',user.schema)
 }
