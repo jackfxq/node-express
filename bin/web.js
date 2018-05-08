@@ -15,6 +15,7 @@ app.all('*', function(req, res, next) {
     console.log(req.get('Origin'),config.accessControlAllowOrigin.includes(req.get('Origin')),config.accessControlAllowOrigin)
     
     if(config.accessControlAllowOrigin.includes(req.get('Origin'))){
+	res.header("Access-Control-Allow-Credentials",  true)
         res.header("Access-Control-Allow-Origin", req.get('Origin'));
         res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type");
         res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");

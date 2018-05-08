@@ -24,7 +24,7 @@ function login(req,res,next) {
             if(err){
                 return next({code: 2, data: '登录失败'});       
             }
-            
+            console.log(user.name)            
             req.session.loginUser = user.name;
             next({code: 0, data: {userName:user.name}});                           
         });
