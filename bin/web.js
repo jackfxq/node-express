@@ -26,6 +26,8 @@ app.all('*', function(req, res, next) {
     next();
 });
 
+app.use('/public',express.static('public'));
+
 app.use(session({
     name: identityKey,
     secret: 'chyingp',  // 用来对session id相关的cookie进行签名
